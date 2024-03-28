@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 const img = new Image();
 img.src = 'image.png';
-const PARTICLE_DIAMETER = 1;
+const PARTICLE_DIAMETER = 6;
 const particles = [];
 let mouseX = Infinity;
 let mouseY = Infinity;
@@ -43,8 +43,9 @@ img.addEventListener('load', () => {
   drawParticles(); 
 })
 function updateParticles() {
-  const REPEL_RADIUS = 50;
+  const REPEL_RADIUS = 25;
   const REPEL_SPEED = 5;
+  const RETURN_SPEED = 0.1;
 
   particles.forEach((particle) => {
     const distanceFromMouseX = mouseX - particle.x;
@@ -68,8 +69,8 @@ function updateParticles() {
         distanceFromOriginX ** 2 + distanceFromOriginY ** 2
       );
       const angle = Math.atan2(distanceFromOriginY, distanceFromOriginX);
-      const moveX = Math.cos(angle) * distanceFromOrigin;
-      const moveY = Math.sin(angle) * distanceFromOrigin;
+      const moveX = Math.cos(angle) * distanceFromOrigin * RETURN_SPEED;
+      const moveY = Math.sin(angle) * distanceFromOrigin * RETURN_SPEED;
       particle.x += moveX;
       particle.y += moveY; 
     }
@@ -89,4 +90,7 @@ function drawParticles() {
     ctx.fill();
   });
   requestAnimationFrame(drawParticles);
+  // setInterval(() => {
+  //   drawParticles();
+  // }, 2 * 1000);
 }
