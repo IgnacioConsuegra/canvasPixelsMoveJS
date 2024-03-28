@@ -76,7 +76,6 @@ function updateParticles() {
     }
     //Delete this else if, if you want particles to stay the
     //position they move To.
-    
   });
 }
 function drawParticles() {
