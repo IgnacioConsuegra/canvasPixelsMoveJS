@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext('2d');
 
 const img = new Image();
-img.src = 'image.png';
+img.src = 'image.jpg';
 const PARTICLE_DIAMETER = 6;
 const particles = [];
 let mouseX = Infinity;
@@ -43,7 +43,7 @@ img.addEventListener('load', () => {
   drawParticles(); 
 })
 function updateParticles() {
-  const REPEL_RADIUS = 25;
+  const REPEL_RADIUS = 50;
   const REPEL_SPEED = 5;
   const RETURN_SPEED = 0.1;
 
